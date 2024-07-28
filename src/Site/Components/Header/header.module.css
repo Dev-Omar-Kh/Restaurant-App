@@ -1,0 +1,512 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.container{
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px 0px;
+    z-index: 100;
+    overflow-x: hidden;
+
+}
+
+.info{
+
+    width: 100%;
+    padding: 0px 4.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+/* .info_det{
+
+    display: flex;
+    align-items: center;
+
+} */
+
+.scroll{
+
+    display: flex;
+    align-items: center;
+
+}
+
+.scroll::-webkit-scrollbar{
+
+    display: none;
+
+}
+
+.info_det p{
+
+    padding: 4.5px 16px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 150%;
+    color: var(--dark-color-1);
+
+}
+
+.info_det p:nth-child(1){
+
+    padding-left: 0px;
+
+}
+
+.info_det p:nth-child(2){
+
+    border-inline: 1px solid var(--dark-color-1);
+
+}
+
+.info_det p:nth-child(3){
+
+    border-right: 1px solid var(--dark-color-1);
+
+}
+
+.info_det p:nth-child(4){
+
+    padding-right: 0px;
+
+}
+
+.det_bold{
+
+    font-weight: 600;
+
+}
+
+.line{
+
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    margin: 0px 16px;
+    border: 1px solid var(--dark-color-2);
+
+}
+
+.det_days{
+
+    margin-right: 16px;
+
+}
+
+.info_social{
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+}
+
+.info_social a{
+
+    font-size: 18px;
+    color: var(--dark-color-1);
+
+}
+
+
+.header_line{
+
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--dark-color-2);
+
+}
+
+.header{
+
+    padding: 2px 4.5%;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logo a{
+
+    display: flex;
+    align-items: center;
+    gap: 8.02px;
+
+}
+
+.logo a p{
+
+    font-size: 25.07px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    color: var(--dark-color-1);
+
+}
+
+.nav{
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+}
+
+.nav ul{
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+}
+
+.nav ul a{
+
+    padding: 10px;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--dark-color-1);
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+
+}
+
+.nav ul a:hover{
+
+    color: var(--dark-color-2);
+    border-color: var(--dark-color-2);
+
+}
+
+.nav_more{
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+}
+
+.search , .cart{
+
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 150%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.search i , .cart i{
+
+    color: var(--dark-color-2);
+
+}
+
+.search{
+
+    color: var(--dark-color-1);
+    border: 1px solid var(--dark-color-1);
+    background-color: transparent;
+
+}
+
+.search:hover{
+
+    color: var(--light-color);
+    border: 1px solid transparent;
+    background-color: var(--dark-color-1);
+
+}
+
+.cart{
+
+    color: var(--light-color);
+    border: 1px solid transparent;
+    background-color: var(--dark-color-1);
+
+}
+
+.cart:hover {
+
+    color: var(--dark-color-1);
+    border: 1px solid var(--dark-color-1);
+    background-color: transparent;
+
+}
+
+/* === nav-phone === */
+
+.nav_ph{
+
+    position: relative;
+    width: 30px;
+    height: 20px;
+    padding: 5px;
+    visibility: hidden;
+    transition: 0.3s;
+
+}
+
+.nav_ph .nav_span{
+
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    display: inline-block;
+    border-radius: 25px;
+    border: 2px solid var(--dark-color-1);
+    background-color: var(--dark-color-1);
+
+}
+
+.nav_ph .nav_span:nth-child(1){
+
+    top: 1px;
+    left: 0;
+    transition: 0.3s;
+
+}
+
+.nav_ph .nav_span:nth-child(2){
+
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+}
+
+.nav_ph .nav_span:nth-child(3) {
+
+    bottom: 1px;
+    left: 0;
+    transition: 0.3s;
+
+}
+
+.change {
+
+    rotate: 180deg;
+
+}
+
+.change .nav_span:nth-child(1) {
+
+    top: 50%;
+    left: 1px;
+    rotate: -45deg;
+
+}
+
+.change .nav_span:nth-child(2) {
+
+    opacity: 0;
+    left: -100%;
+
+}
+
+.change .nav_span:nth-child(3) {
+
+    top: 50%;
+    left: 0;
+    rotate: 45deg;
+
+}
+
+/* ====== responsive-style ====== */
+
+@media(max-width: 1311px){
+
+    .info_det p{
+
+        padding: 4.5px 8px;
+
+    }
+
+    .line{
+
+        width: 20px;
+        margin: 0px 8px;
+
+    }
+
+    .det_days{
+
+        margin-right: 8px;
+
+    }
+
+    .info_social a{
+
+        font-size: 16px;
+
+    }
+
+    .info_social{
+
+        gap: 8px;
+
+    }
+
+}
+
+@media(max-width: 1196px){
+
+
+    .scroll{
+
+        overflow: auto;
+
+    }
+
+    .info_det p{
+
+        font-size: 12px;
+
+    }
+
+    .line{
+
+        width: 15px;
+
+    }
+
+    .info_social a{
+
+        font-size: 13px;
+
+    }
+
+    .info_social{
+
+        gap: 6px;
+
+    }
+
+}
+
+@media(max-width: 1140px){
+
+    .nav{
+
+        gap: 12px;
+
+    }
+
+    .nav ul {
+
+        gap: 8px;
+
+    }
+
+    .nav ul a{
+
+        padding: 10px 5px;
+
+    }
+
+    .nav_more{
+
+        gap: 8px;
+
+    }
+
+    .search , .cart{
+
+        padding: 5px 16px;
+
+    }
+
+}
+
+@media(max-width: 1020px){
+
+    .info_det{
+
+        width: 80%;
+        padding-right: 8px;
+
+    }
+
+    .info_det p{
+
+        white-space: nowrap;
+
+    }
+
+}
+
+@media(max-width: 910px){
+
+    .nav{
+
+        position: fixed;
+        top: 108px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 118px);
+        padding: 20px 4.5%;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        background-color: var(--light-color) !important;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 100;
+        transition: 0.3s;
+
+    }
+
+    .nav_ph{
+
+        visibility: visible;
+
+    }
+
+    .nav ul{
+
+        width: 100%;
+        flex-direction: column !important;
+
+    }
+
+    .nav ul a{
+
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .nav_more{
+
+        width: 100%;
+        flex-direction: column;
+
+    }
+
+    .search , .cart{
+
+        width: 100%;
+        justify-content: center;
+
+    }
+
+    .display_nav {
+
+        top: 118px;
+        visibility: visible;
+        opacity: 1;
+
+    }
+
+}
