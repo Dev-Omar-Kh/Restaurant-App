@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import SearchBar from './Search-Bar/SearchBar';
 
 import hCSS from './header.module.css';
-import { Link } from 'react-router-dom';
 
 export default function Header() {
 
-    useEffect(() => {
 
-        const scroll = document.getElementById('scroll');
-        console.log(scroll.offsetWidth);
+    // ====== nav-for-phone ======
+
+    useEffect(() => {
 
         const navPh = document.getElementById('nav_ph');
         const nav = document.getElementById('nav');
@@ -20,9 +22,50 @@ export default function Header() {
 
         }
 
-    } , [])
+        nav.onclick = () => {
+
+            navPh.classList.toggle(hCSS.change);
+            nav.classList.toggle(hCSS.display_nav);
+
+        }
+
+    } , []);
+
+    // ====== info-moving ======
+
+    useEffect(() => {
+
+        const copy = document.getElementById('scrolling').cloneNode(true);
+        const container = document.getElementById('scroll');
+        container.appendChild(copy);
+
+    } , []);
+
+    // ====== search-bar ======
+
+    const [display, setDisplay] = useState(false)
+
+    const displaySearchBar = () => {
+
+        setDisplay(true);
+
+    };
+
+    const closeSearchBar = (visible) => {
+
+        setDisplay(visible);
+
+    };
+
+    // ====== JSX-CODE ======
 
     return <React.Fragment>
+
+        <AnimatePresence>
+
+            {display && <SearchBar display={closeSearchBar} />}
+
+        </AnimatePresence>
 
         <header className={hCSS.container}>
 
@@ -32,22 +75,26 @@ export default function Header() {
 
                     <div id='scroll' className={hCSS.scroll}>
 
-                        <p>Email:info@ddsgnr.com</p>
-                        <p>Phone Number: 956 742 455 678</p>
-                        <p>
+                        <div id='scrolling' className={hCSS.scrolling}>
 
-                            <span className={hCSS.det_bold}>Opening Hours</span>
-                            <span className={hCSS.line}></span>
-                            <span className={hCSS.det_days}>Monday - Friday</span>
-                            <span>8:00am to 9:00pm</span>
+                            <p>Email:info@ddsgnr.com</p>
+                            <p>Phone Number: 956 742 455 678</p>
+                            <p>
 
-                        </p>
-                        <p>
+                                <span className={hCSS.det_bold}>Opening Hours</span>
+                                <span className={hCSS.line}></span>
+                                <span className={hCSS.det_days}>Monday - Friday</span>
+                                <span>8:00am to 9:00pm</span>
 
-                            <span className={hCSS.det_days}>Saturday - Sunday</span>
-                            <span>8:00am to 4:00pm</span>
+                            </p>
+                            <p>
 
-                        </p>
+                                <span className={hCSS.det_days}>Saturday - Sunday</span>
+                                <span>8:00am to 4:00pm</span>
+
+                            </p>
+
+                        </div>
 
                     </div>
 
@@ -105,7 +152,7 @@ export default function Header() {
 
                     <div className={hCSS.nav_more}>
 
-                        <button className={hCSS.search}><span>Search</span> <i className="fa-solid fa-magnifying-glass"></i></button>
+                        <button onClick={displaySearchBar} className={hCSS.search}><span>Search</span> <i className="fa-solid fa-magnifying-glass"></i></button>
                         <Link className={hCSS.cart}><span>Cart</span> <i className="fa-solid fa-bag-shopping"></i></Link>
 
                     </div>
