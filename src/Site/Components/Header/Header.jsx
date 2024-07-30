@@ -42,8 +42,6 @@ export default function Header() {
             const container = document.getElementById('scroll');
             container.appendChild(copy);
 
-            console.log('done');
-
         }
 
     } , []);

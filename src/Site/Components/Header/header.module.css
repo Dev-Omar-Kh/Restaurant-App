@@ -9,6 +9,8 @@
     padding: 12px 0px;
     z-index: 100;
     overflow-x: hidden;
+    background-color: var(--light-color);
+    border-bottom: 1px solid var(--dark-color-2);
 
 }
 
@@ -442,7 +444,7 @@
 
     .scroll{
 
-            animation: scroll 10s linear infinite;
+            animation: scroll 40s linear infinite;
 
     }
 
