@@ -25,7 +25,6 @@
 .info_det {
 
     position: relative;
-    width: 77%;
     margin-right: 8px;
     overflow: hidden;
 
@@ -36,7 +35,6 @@
     width: fit-content;
     display: flex;
     gap: 8px;
-    animation: scroll 40s linear infinite;
 
 }
 
@@ -45,7 +43,6 @@
     white-space: nowrap;
     display: flex;
     align-items: center;
-    /* background-color: aqua; */
 
 }
 
@@ -442,6 +439,12 @@
 }
 
 @media(max-width: 1020px){
+
+    .scroll{
+
+            animation: scroll 10s linear infinite;
+
+    }
 
     .info_det p{
 

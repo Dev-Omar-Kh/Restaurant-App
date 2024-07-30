@@ -35,9 +35,16 @@ export default function Header() {
 
     useEffect(() => {
 
-        const copy = document.getElementById('scrolling').cloneNode(true);
-        const container = document.getElementById('scroll');
-        container.appendChild(copy);
+        const windowWidth = document.getElementById('header').offsetWidth
+        if(windowWidth <= 1024){
+
+            const copy = document.getElementById('scrolling').cloneNode(true);
+            const container = document.getElementById('scroll');
+            container.appendChild(copy);
+
+            console.log('done');
+
+        }
 
     } , []);
 
@@ -67,7 +74,7 @@ export default function Header() {
 
         </AnimatePresence>
 
-        <header className={hCSS.container}>
+        <header id='header' className={hCSS.container}>
 
             <div className={hCSS.info}>
 

@@ -9,7 +9,7 @@ export default function SearchBar({display}) {
 
         hidden : {opacity : 0},
         visible : {opacity : 1 , transition : {duration : 0.3 , when : 'beforeChildren' , staggerChildren : 0.3}},
-        exit : {opacity : 0 , transition : {duration : 0.3, when : 'afterChildren' , staggerChildren : 0}},
+        exit : {opacity : 0 , transition : {duration : 0.3, when : 'afterChildren' , staggerChildren : 0.3 , staggerDirection : -1}},
 
     }
 
@@ -17,7 +17,7 @@ export default function SearchBar({display}) {
 
         hidden : {y : 20 , opacity : 0},
         visible : {y : 0 , opacity : 1 , transition : {duration : 0.3}},
-        exit : {scale : 0 , opacity : 0 , transition : {duration : 0.3}},
+        exit : {y : 20 , opacity : 0 , transition : {duration : 0.3}},
 
     }
 
