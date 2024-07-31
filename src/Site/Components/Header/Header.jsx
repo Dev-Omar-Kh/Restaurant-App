@@ -159,7 +159,7 @@ export default function Header() {
                     <div className={hCSS.nav_more}>
 
                         <button onClick={displaySearchBar} className={hCSS.search}><span>Search</span> <i className="fa-solid fa-magnifying-glass"></i></button>
-                        <Link className={hCSS.cart}><span>Sign Up</span> <i className="fa-solid fa-bag-shopping"></i></Link>
+                        <Link to={'/auth'} className={hCSS.cart}><span>Sign In</span> <i className="fa-solid fa-user"></i></Link>
 
                     </div>
 

@@ -10,7 +10,6 @@
     z-index: 100;
     overflow-x: hidden;
     background-color: var(--light-color);
-    border-bottom: 1px solid var(--dark-color-2);
 
 }
 
