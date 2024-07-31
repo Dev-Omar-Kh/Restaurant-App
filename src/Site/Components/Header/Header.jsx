@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import SearchBar from './Search-Bar/SearchBar';
 
 import hCSS from './header.module.css';
+import './active.css';
 
 export default function Header() {
 
@@ -147,18 +148,18 @@ export default function Header() {
 
                     <ul>
 
-                        <Link><li>Home</li></Link>
-                        <Link><li>About Us</li></Link>
-                        <Link><li>Menu</li></Link>
-                        <Link><li>Contact Us</li></Link>
-                        <Link><li>Achievements</li></Link>
+                        <NavLink to={'/'}><li>Home</li></NavLink>
+                        <NavLink to={'/about'}><li>About Us</li></NavLink>
+                        <NavLink to={'/menu'}><li>Menu</li></NavLink>
+                        <NavLink to={'/contact'}><li>Contact Us</li></NavLink>
+                        <NavLink to={'/achieve'}><li>Achievements</li></NavLink>
 
                     </ul>
 
                     <div className={hCSS.nav_more}>
 
                         <button onClick={displaySearchBar} className={hCSS.search}><span>Search</span> <i className="fa-solid fa-magnifying-glass"></i></button>
-                        <Link className={hCSS.cart}><span>Cart</span> <i className="fa-solid fa-bag-shopping"></i></Link>
+                        <Link className={hCSS.cart}><span>Sign Up</span> <i className="fa-solid fa-bag-shopping"></i></Link>
 
                     </div>
 

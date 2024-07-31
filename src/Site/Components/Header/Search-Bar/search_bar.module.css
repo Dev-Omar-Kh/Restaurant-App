@@ -27,10 +27,13 @@
     font-size: 25px;
     color: var(--light-color);
     border-radius: 50%;
-    background-color: var(--dark-color-1);
+    background-color: var(--dark-color-2);
     cursor: pointer;
+    transition: 0.3s;
 
 }
+
+
 
 .form {
 
@@ -56,6 +59,20 @@
     border: 1px solid var(--dark-color-1);
     border-radius: 5px;
     background-color: var(--light-color);
+    transition: 0.3s;
+
+}
+
+.input:focus{
+
+    border-color: var(--dark-color-2);
+
+}
+
+.input::placeholder{
+
+    color: var(--dark-color-1);
+    opacity: 0.5;
 
 }
 
@@ -75,15 +92,15 @@
 
 .button:hover {
 
-    color: var(--dark-color-1);
-    border-color: var(--dark-color-1);
+    color: var(--dark-color-2);
+    border-color: var(--dark-color-2);
     background-color: var(--light-color);
 
 }
 
 /* ====== responsive-style ====== */
 
-@media(max-width: 1060px) {
+/* @media(max-width: 1060px) {
 
     .span {
 
@@ -91,7 +108,7 @@
 
     }
 
-}
+} */
 
 @media(max-width: 578px) {
 

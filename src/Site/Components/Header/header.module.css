@@ -144,8 +144,8 @@
 
 .header{
 
-    padding: 2px 4.5%;
-    padding-top: 14px;
+    padding: 0px 4.5%;
+    padding-top: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -456,15 +456,15 @@
 
 }
 
-@media(max-width: 910px){
+@media(max-width: 950px){
 
     .nav{
 
         position: fixed;
-        top: 108px;
+        top: 100.7px;
         left: 0;
         width: 100%;
-        height: calc(100% - 118px);
+        height: calc(100% - 110.7px);
         padding: 20px 4.5%;
         flex-direction: column !important;
         justify-content: space-between !important;
@@ -513,7 +513,7 @@
 
     .display_nav {
 
-        top: 118px;
+        top: 110.7px;
         visibility: visible;
         opacity: 1;
 
