@@ -22,6 +22,9 @@ export default function Auth() {
             if(typeLogin){overView.classList.add(aCSS.translate_left);}
             else{overView.classList.remove(aCSS.translate_left);}
 
+            overView.classList.add(aCSS.scale_big)
+            setTimeout(() => {overView.classList.remove(aCSS.scale_big);} , 300);
+
             overDet.classList.add(aCSS.opacity_frame);
             setTimeout(() => {overDet.classList.remove(aCSS.opacity_frame);} , 1000);
 

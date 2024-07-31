@@ -463,7 +463,7 @@
         top: 100.7px;
         left: 0;
         width: 100%;
-        height: calc(100% - 110.7px);
+        height: calc(100svh - 110.7px);
         padding: 20px 4.5%;
         flex-direction: column !important;
         justify-content: space-between !important;
@@ -512,7 +512,7 @@
 
     .display_nav {
 
-        top: 110.7px;
+        top: 109px;
         visibility: visible;
         opacity: 1;
 

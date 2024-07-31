@@ -24,7 +24,7 @@
 
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
     width: 50%;
     height: 100%;
     display: flex;
@@ -49,9 +49,15 @@
 
 }
 
+.scale_big{
+
+    scale: 1.1;
+
+}
+
 .translate_left{
 
-    left: 50%;
+    left: 0%;
     top: 0%;
 
 }
@@ -144,14 +150,14 @@
 .login{
 
     top: 0%;
-    right: 0%;
+    left: 0%;
 
 }
 
 .register{
 
     top: 0%;
-    left: 0%;
+    right: 0%;
 
 }
 
@@ -420,20 +426,27 @@
 
     .login{
 
-        top: 50% !important;
+        top: 0% !important;
 
     }
 
     .register{
 
-        top: 0% !important;
+        top: 50% !important;
+
+    }
+
+    .over_view{
+
+        left: 0% !important;
+        top: 50%;
 
     }
 
     .translate_left{
 
         left: 0%;
-        top: 50%;
+        top: 0%;
 
     }
 
