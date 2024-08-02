@@ -4,6 +4,7 @@ import aCSS from './auth.module.css';
 import Login from './Login';
 import Register from './Register';
 import { AnimatePresence } from 'framer-motion';
+import Status from '../../Components/Status/Status';
 
 export default function Auth() {
 
@@ -33,6 +34,8 @@ export default function Auth() {
     } ,[typeLogin])
 
     return <React.Fragment>
+
+        <Status />
 
         <div className={aCSS.container}>
 

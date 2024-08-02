@@ -173,8 +173,23 @@
 
 .input_cont label{
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.label_title{
+
     font-size: 18px;
     color: var(--dark-color-1);
+
+}
+
+.label_error_msg{
+
+    font-size: 9px;
+    color: var(--dark-color-2);
 
 }
 

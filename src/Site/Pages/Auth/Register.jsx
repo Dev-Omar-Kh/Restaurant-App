@@ -5,8 +5,75 @@ import lCSS from './auth.module.css';
 
 import eye from '../../Images/SVG/eye-icon-svg.svg';
 import eyeSlash from '../../Images/SVG/eye-slash-icon-svg.svg';
+import { useFormik } from 'formik';
+import axios from 'axios';
 
 export default function Register() {
+
+    // ====== send-data-to-back-end ====== //
+
+    const userValue = {
+
+        userName : "",
+        email : "",
+        password : "",
+        confirmPassword : ""
+
+    }
+
+    const registerHandle = async(values) => {
+
+        try{
+
+            const {data} = await axios.post('https://restaurant-six-snowy.vercel.app/auth/register' , values);
+            if(data.success){
+                console.log('welcome');
+            }
+
+        }
+        catch(err){
+            console.log(err);
+        }
+
+    }
+
+    const formikObj = useFormik({
+
+        initialValues : userValue,
+
+        onSubmit : registerHandle,
+
+        validate : (values) => {
+
+            const errors = {};
+
+            if(values.userName.length < 4){
+                errors.userName = 'Name is too short';
+            }
+
+            if(!values.email.includes('@') || !values.email.includes('.')){
+                errors.email = 'Email is invalid';
+            }
+
+            if(values.password.length < 6){
+                errors.password = 'The password is shorter than 8 characters';
+            }
+
+            if(values.password.length > 12){
+                errors.password = 'The password is longer than 12 characters';
+            }
+
+            if(values.confirmPassword !== values.password){
+                errors.confirmPassword = "Password doesn't match"
+            }
+
+            return errors;
+
+        }
+
+    })
+
+    // ====== ui-handling ====== //
 
     const [passwordShowRegister1, setPasswordShowRegister1] = useState(false);
     const [passwordShowRegister2, setPasswordShowRegister2] = useState(false);
@@ -48,6 +115,7 @@ export default function Register() {
     return <React.Fragment>
 
         <motion.form 
+            onSubmit={formikObj.handleSubmit}
             variants={formVariants} initial='hidden' animate='visible' transition='transition' exit='hidden'
             className={lCSS.form + ' ' + lCSS.register}
         >
@@ -55,23 +123,50 @@ export default function Register() {
             <div className={lCSS.input_cont}>
 
                 <div className={lCSS.loader}></div>
-                <label htmlFor="name">Name :</label>
-                <input id='name' type="text" placeholder='' />
+                <label htmlFor="userName">
+                    <span className={lCSS.label_title}>Name :</span>
+                    <span className={lCSS.label_error_msg}>
+                        {formikObj.errors.userName && formikObj.touched.userName ? <>* {formikObj.errors.userName}</> : ''}
+                    </span>
+                </label>
+                <input 
+                    id='userName' type="text" placeholder='' 
+                    onBlur={formikObj.handleBlur}
+                    onChange={formikObj.handleChange} value={formikObj.values.userName} 
+                />
 
             </div>
 
             <div className={lCSS.input_cont}>
 
                 <div className={lCSS.loader}></div>
-                <label htmlFor="email">Email :</label>
-                <input id='email' type="text" placeholder='Example@gmial.com' />
+                <label htmlFor="email">
+                    <span className={lCSS.label_title}>Email :</span>
+                    <span className={lCSS.label_error_msg}>
+                        {formikObj.errors.email && formikObj.touched.email ? <>* {formikObj.errors.email}</> : ''}
+                    </span>
+                </label>
+                <input 
+                    id='email' type="text" placeholder='Example@gmial.com' 
+                    onBlur={formikObj.handleBlur}
+                    onChange={formikObj.handleChange} value={formikObj.values.email} 
+                />
 
             </div>
 
             <div className={lCSS.input_cont}>
 
-                <label htmlFor="password">Password :</label>
-                <input id='password' type={passwordShowRegister1 ? "text" : "password"} />
+                <label htmlFor="password">
+                    <span className={lCSS.label_title}>Password :</span>
+                    <span className={lCSS.label_error_msg}>
+                        {formikObj.errors.password && formikObj.touched.password ? <>* {formikObj.errors.password}</> : ''}
+                    </span>
+                </label>
+                <input 
+                    id='password' type={passwordShowRegister1 ? "text" : "password"} 
+                    onBlur={formikObj.handleBlur}
+                    onChange={formikObj.handleChange} value={formikObj.values.password} 
+                />
 
                 <div id='showPasswordRegister1' className={lCSS.eye_cont}>
 
@@ -105,8 +200,21 @@ export default function Register() {
 
             <div className={lCSS.input_cont}>
 
-                <label htmlFor="cPassword">Confirm Password :</label>
-                <input id='cPassword' type={passwordShowRegister2 ? "text" : "password"} />
+                <label htmlFor="confirmPassword">
+                    <span className={lCSS.label_title}>Confirm Password :</span>
+                    <span className={lCSS.label_error_msg}>
+                        {formikObj.errors.confirmPassword && formikObj.touched.confirmPassword ?
+                            <>* {formikObj.errors.confirmPassword}</>
+                            :
+                            ''
+                        }
+                    </span>
+                </label>
+                <input 
+                    id='confirmPassword' type={passwordShowRegister2 ? "text" : "password"} 
+                    onBlur={formikObj.handleBlur}
+                    onChange={formikObj.handleChange} value={formikObj.values.confirmPassword}
+                />
 
                 <div id='showPasswordRegister2' className={lCSS.eye_cont}>
 
