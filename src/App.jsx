@@ -5,6 +5,7 @@ import LayoutAdmin from './Admin/Layout/LayoutAdmin';
 import Home from './Site/Pages/Home/Home';
 import Auth from './Site/Pages/Auth/Auth';
 import Users from './Admin/Pages/Users/Users';
+import AdminRoute from './Site/Components/Admin-Protect/AdminRoute';
 
 import './App.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -18,7 +19,7 @@ const routes = createBrowserRouter([
 
   ]},
 
-  {path : 'dashboard' , element : <LayoutAdmin /> , children : [
+  {path : 'dashboard' , element : <AdminRoute><LayoutAdmin /></AdminRoute> , children : [
 
     {path : '/dashboard' , element : <Users />}
 

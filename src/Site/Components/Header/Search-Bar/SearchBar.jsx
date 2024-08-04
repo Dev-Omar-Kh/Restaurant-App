@@ -8,16 +8,16 @@ export default function SearchBar({display}) {
     const divVariants = {
 
         hidden : {opacity : 0},
-        visible : {opacity : 1 , transition : {duration : 0.3 , when : 'beforeChildren' , staggerChildren : 0.3}},
-        exit : {opacity : 0 , transition : {duration : 0.3, when : 'afterChildren' , staggerChildren : 0.3 , staggerDirection : -1}},
+        visible : {opacity : 1 , transition : {duration : 0.2}},
+        exit : {opacity : 0 , transition : {duration : 0.2, when : 'afterChildren'}},
 
     }
 
     const childVariants = {
 
         hidden : {y : 20 , opacity : 0},
-        visible : {y : 0 , opacity : 1 , transition : {duration : 0.3}},
-        exit : {y : 20 , opacity : 0 , transition : {duration : 0.3}},
+        visible : {y : 0 , opacity : 1 , transition : {duration : 0.2}},
+        exit : {y : 20 , opacity : 0 , transition : {duration : 0.2}},
 
     }
 

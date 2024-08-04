@@ -36,6 +36,8 @@ export default function Login({verify}) {
         console.log(data);
         
         if(data.success){
+            localStorage.setItem('tkn' , data.result);
+
             setSuccessMsg('Login processed successfully. Welcome!');
 
             setTimeout(() => {
@@ -64,8 +66,8 @@ export default function Login({verify}) {
                 errors.email = 'Email is invalid';
             }
 
-            if(values.password.length < 6){
-                errors.password = 'The password is shorter than 8 characters';
+            if(values.password.length < 4){
+                errors.password = 'The password is shorter than 6 characters';
             }
 
             if(values.password.length > 12){

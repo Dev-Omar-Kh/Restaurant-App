@@ -9,6 +9,7 @@ export default function Auth() {
 
     const [typeLogin, setTypeLogin] = useState(true);
     const [verifyMsg, setVerifyMsg] = useState(null);
+    const [scrollTop, setScrollTop] = useState(false);
 
     useEffect(() => {
 
@@ -28,10 +29,33 @@ export default function Auth() {
 
         }
 
-        if(!typeLogin){overView.classList.add(aCSS.translate_left);}
-        else{overView.classList.remove(aCSS.translate_left);}
+        if(!typeLogin){
+            overView.classList.add(aCSS.translate_left);
+        }
+        else{
+            overView.classList.remove(aCSS.translate_left);
+        }
 
-    })
+        if(scrollTop){
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            setScrollTop(false);
+        }
+
+    } , [verifyMsg , typeLogin , scrollTop]);
+
+    useEffect(() => {
+
+        setTimeout(() => {
+            window.scrollTo({
+                top: 520,
+                behavior: 'smooth'
+            });
+        }, 800);
+
+    } , []);
 
     return <React.Fragment>
 
@@ -75,7 +99,7 @@ export default function Auth() {
 
                 <AnimatePresence>
 
-                    {!typeLogin && <Register setVerify={setVerifyMsg} type={setTypeLogin} />}
+                    {!typeLogin && <Register setScrollTop={setScrollTop} setVerify={setVerifyMsg} type={setTypeLogin} />}
 
                 </AnimatePresence>
 

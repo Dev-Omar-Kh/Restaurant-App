@@ -10,7 +10,7 @@ import axios from 'axios';
 import Status from '../../Components/Status/Status';
 import { ThreeCircles } from 'react-loader-spinner';
 
-export default function Register({setVerify , type}) {
+export default function Register({setVerify , type , setScrollTop}) {
 
     // ====== send-data-to-back-end ====== //
 
@@ -39,6 +39,7 @@ export default function Register({setVerify , type}) {
 
             setTimeout(() => {
                 type(true);
+                setScrollTop(true)
             } , 3500);
 
             setVerify('* Check emails to verify your account');
