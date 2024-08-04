@@ -1,4 +1,4 @@
-.active{
+.user_nav_link.active{
 
     color: var(--dark-color-2) !important;
     border-color: var(--dark-color-2) !important;

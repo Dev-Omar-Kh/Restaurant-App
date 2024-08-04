@@ -1,0 +1,12 @@
+.admin_nav_link.active{
+
+    background-color: var(--dark-color-1) !important;
+    color: var(--light-color) !important;
+
+}
+
+.admin_nav_link.active .icons_active{
+
+    color: var(--light-color) !important;
+
+}

@@ -7,10 +7,16 @@ import eye from '../../Images/SVG/eye-icon-svg.svg';
 import eyeSlash from '../../Images/SVG/eye-slash-icon-svg.svg';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import Status from '../../Components/Status/Status';
+import { ThreeCircles } from 'react-loader-spinner';
 
-export default function Register() {
+export default function Register({setVerify , type}) {
 
     // ====== send-data-to-back-end ====== //
+
+    const [successMsg, setSuccessMsg] = useState(null);
+    const [errMsg, setErrMsg] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const userValue = {
 
@@ -23,17 +29,25 @@ export default function Register() {
 
     const registerHandle = async(values) => {
 
-        try{
+        setLoading(true);
 
-            const {data} = await axios.post('https://restaurant-six-snowy.vercel.app/auth/register' , values);
-            if(data.success){
-                console.log('welcome');
-            }
+
+        const {data} = await axios.post('https://restaurant-six-snowy.vercel.app/auth/register' , values);
+        if(data.success){
+
+            setSuccessMsg('Registration successful. Go to gmail to verify your email');
+
+            setTimeout(() => {
+                type(true);
+            } , 3500);
+
+            setVerify('* Check emails to verify your account');
 
         }
-        catch(err){
-            console.log(err);
-        }
+        else{setErrMsg('Registration failed. This email already registered!')}
+
+
+        setLoading(false);
 
     }
 
@@ -44,6 +58,8 @@ export default function Register() {
         onSubmit : registerHandle,
 
         validate : (values) => {
+
+            setErrMsg(null);
 
             const errors = {};
 
@@ -71,7 +87,11 @@ export default function Register() {
 
         }
 
-    })
+    });
+
+    // ====== display-error-message ====== //
+
+    const [visible, setVisible] = useState(true);
 
     // ====== ui-handling ====== //
 
@@ -114,10 +134,13 @@ export default function Register() {
 
     return <React.Fragment>
 
+        {successMsg ? <Status icon='success' isVisible={visible} visibility={setVisible} data={successMsg} /> : ''}
+        {errMsg ? <Status icon='error' isVisible={visible} visibility={setVisible} data={errMsg} /> : ''}
+
         <motion.form 
             onSubmit={formikObj.handleSubmit}
             variants={formVariants} initial='hidden' animate='visible' transition='transition' exit='hidden'
-            className={lCSS.form + ' ' + lCSS.register}
+            id={loading ? lCSS.opacity_low : ''} className={lCSS.form + ' ' + lCSS.register}
         >
 
             <div className={lCSS.input_cont}>
@@ -129,7 +152,8 @@ export default function Register() {
                         {formikObj.errors.userName && formikObj.touched.userName ? <>* {formikObj.errors.userName}</> : ''}
                     </span>
                 </label>
-                <input 
+                <input
+                    disabled={loading}
                     id='userName' type="text" placeholder='' 
                     onBlur={formikObj.handleBlur}
                     onChange={formikObj.handleChange} value={formikObj.values.userName} 
@@ -146,7 +170,8 @@ export default function Register() {
                         {formikObj.errors.email && formikObj.touched.email ? <>* {formikObj.errors.email}</> : ''}
                     </span>
                 </label>
-                <input 
+                <input
+                    disabled={loading}
                     id='email' type="text" placeholder='Example@gmial.com' 
                     onBlur={formikObj.handleBlur}
                     onChange={formikObj.handleChange} value={formikObj.values.email} 
@@ -162,7 +187,8 @@ export default function Register() {
                         {formikObj.errors.password && formikObj.touched.password ? <>* {formikObj.errors.password}</> : ''}
                     </span>
                 </label>
-                <input 
+                <input
+                    disabled={loading}
                     id='password' type={passwordShowRegister1 ? "text" : "password"} 
                     onBlur={formikObj.handleBlur}
                     onChange={formikObj.handleChange} value={formikObj.values.password} 
@@ -210,7 +236,8 @@ export default function Register() {
                         }
                     </span>
                 </label>
-                <input 
+                <input
+                    disabled={loading}
                     id='confirmPassword' type={passwordShowRegister2 ? "text" : "password"} 
                     onBlur={formikObj.handleBlur}
                     onChange={formikObj.handleChange} value={formikObj.values.confirmPassword}
@@ -258,7 +285,16 @@ export default function Register() {
 
             </div>
 
-            <button className={lCSS.submit} type='submit'>Sign In</button>
+            <motion.button whileTap={{scale : 0.95}} className={lCSS.submit} type='submit'>
+                {loading ? 
+                    <ThreeCircles
+                        visible={true} height="20" width="20" color="#F1FAEE"
+                        ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+                    />
+                    :
+                    'Sign In'
+                }
+            </motion.button>
 
         </motion.form>
 

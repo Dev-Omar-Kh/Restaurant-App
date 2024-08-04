@@ -148,11 +148,11 @@ export default function Header() {
 
                     <ul>
 
-                        <NavLink to={'/'}><li>Home</li></NavLink>
-                        <NavLink to={'/about'}><li>About Us</li></NavLink>
-                        <NavLink to={'/menu'}><li>Menu</li></NavLink>
-                        <NavLink to={'/contact'}><li>Contact Us</li></NavLink>
-                        <NavLink to={'/achieve'}><li>Achievements</li></NavLink>
+                        <NavLink className='user_nav_link' to={'/'}><li>Home</li></NavLink>
+                        <NavLink className='user_nav_link' to={'/about'}><li>About Us</li></NavLink>
+                        <NavLink className='user_nav_link' to={'/menu'}><li>Menu</li></NavLink>
+                        <NavLink className='user_nav_link' to={'/contact'}><li>Contact Us</li></NavLink>
+                        <NavLink className='user_nav_link' to={'/achieve'}><li>Achievements</li></NavLink>
 
                     </ul>
 

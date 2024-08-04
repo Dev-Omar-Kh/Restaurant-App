@@ -4,11 +4,11 @@ import aCSS from './auth.module.css';
 import Login from './Login';
 import Register from './Register';
 import { AnimatePresence } from 'framer-motion';
-import Status from '../../Components/Status/Status';
 
 export default function Auth() {
 
     const [typeLogin, setTypeLogin] = useState(true);
+    const [verifyMsg, setVerifyMsg] = useState(null);
 
     useEffect(() => {
 
@@ -20,9 +20,6 @@ export default function Auth() {
 
             setTypeLogin(prevState => !prevState);
 
-            if(typeLogin){overView.classList.add(aCSS.translate_left);}
-            else{overView.classList.remove(aCSS.translate_left);}
-
             overView.classList.add(aCSS.scale_big)
             setTimeout(() => {overView.classList.remove(aCSS.scale_big);} , 300);
 
@@ -31,11 +28,12 @@ export default function Auth() {
 
         }
 
-    } ,[typeLogin])
+        if(!typeLogin){overView.classList.add(aCSS.translate_left);}
+        else{overView.classList.remove(aCSS.translate_left);}
+
+    })
 
     return <React.Fragment>
-
-        <Status />
 
         <div className={aCSS.container}>
 
@@ -71,13 +69,13 @@ export default function Auth() {
 
                 <AnimatePresence>
 
-                    {typeLogin && <Login />}
+                    {typeLogin && <Login verify={verifyMsg} />}
 
                 </AnimatePresence>
 
                 <AnimatePresence>
 
-                    {!typeLogin && <Register />}
+                    {!typeLogin && <Register setVerify={setVerifyMsg} type={setTypeLogin} />}
 
                 </AnimatePresence>
 
