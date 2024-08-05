@@ -1,0 +1,202 @@
+.container{
+
+    width: 100%;
+    padding: 112px 4.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 112px;
+
+}
+
+.welcome_box{
+
+    width: 100%;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.box_img , .box_det{
+
+    height: 100%;
+
+}
+
+.box_img{
+
+    width: 45%;
+
+}
+
+.box_img img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+
+}
+
+.box_det{
+
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+
+}
+
+.box_det h3{
+
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 120%;
+    color: var(--dark-color-1);
+
+}
+
+.box_det p{
+
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--dark-color-1);
+
+}
+
+.box_det button{
+
+    width: fit-content;
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--dark-color-1);
+    border-radius: 5px;
+    border: 1px solid var(--dark-color-1);
+    background-color: transparent;
+    cursor: pointer;
+
+}
+
+.welcome_box:nth-child(even){
+
+    flex-direction: row-reverse;
+
+}
+
+/* ====== responsive-style ====== */
+
+@media(max-width: 1259px){
+
+    .box_img{
+
+        width: 58%;
+
+    }
+
+    .box_det{
+
+        width: 40%;
+
+    }
+
+}
+
+@media(max-width: 956px){
+
+    .box_img{
+
+        width: 55%;
+
+    }
+
+    .box_det{
+
+        width: 43%;
+
+    }
+
+}
+
+@media(max-width: 823px){
+
+    .container{
+
+        gap: 96px;
+
+    }
+
+    .welcome_box{
+
+        height: fit-content !important;
+        flex-direction: column;
+        gap: 48px;
+
+    }
+
+    .welcome_box:nth-child(even){
+
+        flex-direction: column-reverse;
+
+    }
+
+    .box_img{
+
+        width: 60%;
+
+    }
+
+    .box_det{
+
+        width: 60%;
+
+    }
+
+}
+
+@media(max-width: 542px) {
+
+    .box_img {
+
+        width: 90%;
+
+    }
+
+    .box_det {
+
+        width: 90%;
+
+    }
+
+}
+
+@media(max-width: 389px) {
+
+    .box_img {
+
+        width: 100%;
+
+    }
+
+    .box_img img{
+
+        height: 350px !important;
+
+    }
+
+    .box_det {
+
+        width: 100%;
+
+    }
+
+    .box_det h3{
+
+        font-size: 32px;
+        line-height: 130%;
+
+    }
+
+}

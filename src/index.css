@@ -26,6 +26,23 @@
     --dark-color-1-05: rgba(29, 53, 87, 0.5);
     --dark-color-1-02: rgba(29, 53, 87, 0.2);
     --dark-color-1-005: rgba(29, 53, 87, 0.05);
+    --dark-color-1-001: rgba(29, 53, 87, 0.04);
+
+}
+
+/* ====== scroll-bar ====== */
+
+::-webkit-scrollbar{
+
+    width: 10px;
+    background-color: var(--light-color);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    border-radius: 25px;
+    background-color: var(--dark-color-1);
 
 }
 
