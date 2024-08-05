@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import pcCSS from './pro-cont.module.css';
 import ProCard from '../Product-Card/ProCard';
 
 export default function ProCont() {
+
+    const [filterActive, setFilterActive] = useState(0);
+
+    const filters =['All', 'Rice', 'Sandwiches', 'Pizzas', 'Soap', 'Drinks'];
+
+    const selectType = (type) =>{
+
+        setFilterActive(type);
+
+    }
+
+    const filterStyle = (index) => ({
+
+        backgroundColor : index === filterActive ? 'var(--dark-color-1-005)' : 'transparent'
+
+    });
 
     return <React.Fragment>
 
@@ -21,12 +37,7 @@ export default function ProCont() {
 
                 <div className={pcCSS.filter_scroll}>
 
-                    <li>All</li>
-                    <li>Rice</li>
-                    <li>Sandwiches</li>
-                    <li>Pizzas</li>
-                    <li>Soap</li>
-                    <li>Drinks</li>
+                    {filters.map((type , idx) => <li key={idx} onClick={() => selectType(idx)} style={filterStyle(idx)}>{type}</li>)}
 
                 </div>
 

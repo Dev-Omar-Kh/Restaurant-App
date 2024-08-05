@@ -39,7 +39,7 @@ export default function Register({setVerify , type , setScrollTop}) {
 
             setTimeout(() => {
                 type(true);
-                setScrollTop(true)
+                setScrollTop(true);
             } , 3500);
 
             setVerify('* Check emails to verify your account');
@@ -73,7 +73,7 @@ export default function Register({setVerify , type , setScrollTop}) {
             }
 
             if(values.password.length < 6){
-                errors.password = 'The password is shorter than 8 characters';
+                errors.password = 'The password is shorter than 6 characters';
             }
 
             if(values.password.length > 12){

@@ -1,10 +1,10 @@
 .container{
 
     width: 100%;
-    padding: 112px 4.5%;
+    padding: 80px 4.5%;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 60px;
 
 }
 
@@ -49,6 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
 
 }
 
@@ -64,15 +65,9 @@
     font-size: 16px;
     line-height: 150%;
     color: var(--dark-color-1);
-    border-bottom: 1px solid transparent;
+    border-radius: 25px;
     transition: 0.3s;
     cursor: pointer;
-
-}
-
-.filter li:hover{
-
-    border-color: var(--dark-color-2);
 
 }
 

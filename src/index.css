@@ -52,5 +52,6 @@ body{
 
     width: 100%;
     background-color: var(--light-color);
+    overflow-x: hidden;
 
 }

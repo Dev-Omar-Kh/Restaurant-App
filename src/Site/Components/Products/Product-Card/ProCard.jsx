@@ -3,17 +3,28 @@ import React from 'react';
 import pcCSS from './pro-card.module.css';
 
 export default function ProCard() {
-  return (
+
+  return <React.Fragment>
+
     <div className={pcCSS.card}>
 
-        <img src={require('../../../Images/auth_bg.jpg')} alt="" />
+      <div className={pcCSS.actions}>
 
-        <h3>Fruit Salad</h3>
+        <span><i className="fa-regular fa-heart"></i></span>
+        <span><i className="fa-solid fa-cart-shopping"></i></span>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+      </div>
 
-        <span>128 EGP</span>
+      <img src={require('../../../Images/auth_bg.jpg')} alt="" />
+
+      <h3>Fruit Salad</h3>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+
+      <span>128 EGP</span>
 
     </div>
-  )
+
+  </React.Fragment>
+
 }
