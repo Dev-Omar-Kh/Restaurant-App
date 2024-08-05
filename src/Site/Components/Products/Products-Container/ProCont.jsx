@@ -35,19 +35,6 @@ export default function ProCont() {
             <div className={pcCSS.card_cont}>
 
                 <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
-                <ProCard />
 
             </div>
 
