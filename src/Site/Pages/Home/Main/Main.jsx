@@ -25,32 +25,36 @@ export default function Main() {
 
     return <React.Fragment>
 
-        <motion.div variants={parentVariants} initial='hidden' animate='visible' transition='transition' className={mCSS.container}>
+        <div className={mCSS.main}>
 
-            <div className={mCSS.main_det}>
+            <motion.div variants={parentVariants} initial='hidden' animate='visible' transition='transition' className={mCSS.container}>
 
-                <h3>{h3.split('').map((char , idx) => {
+                <div className={mCSS.main_det}>
 
-                    return  <motion.span key={idx} variants={childVariants}>{char}</motion.span>
+                    <h3>{h3.split('').map((char , idx) => {
 
-                })}</h3>
+                        return  <motion.span key={idx} variants={childVariants}>{char}</motion.span>
 
-                <p>{p.split('').map((char , idx) => {
+                    })}</h3>
 
-                    return  <motion.span key={idx} variants={childVariants}>{char}</motion.span>
+                    <p>{p.split('').map((char , idx) => {
 
-                })}</p>
+                        return  <motion.span key={idx} variants={childVariants}>{char}</motion.span>
 
-                <motion.div variants={parentVariants} className={mCSS.det_btns}>
+                    })}</p>
 
-                    <motion.a variants={childVariants} href="#fff">View Dishes</motion.a>
-                    <motion.a variants={childVariants} href="#fff">View Menu</motion.a>
+                    <motion.div variants={parentVariants} className={mCSS.det_btns}>
 
-                </motion.div>
+                        <motion.a variants={childVariants} href="#fff">View Dishes</motion.a>
+                        <motion.a variants={childVariants} href="#fff">View Menu</motion.a>
 
-            </div>
+                    </motion.div>
 
-        </motion.div>
+                </div>
+
+            </motion.div>
+
+        </div>
 
     </React.Fragment>
 

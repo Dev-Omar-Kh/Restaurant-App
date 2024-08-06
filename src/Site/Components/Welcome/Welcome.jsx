@@ -1,6 +1,7 @@
 import React from 'react';
 
 import wCSS from './welcome.module.css';
+import { motion } from 'framer-motion';
 
 const data = [
 
@@ -41,9 +42,24 @@ const data = [
 
 export default function Welcome() {
 
+    const parentVariants = {
+
+        hidden : {opacity : 0},
+        visible : {opacity : 1 , transition : {type: 'wheel' , when : 'beforeChildren' , staggerChildren : 0.05}},
+        transition : {duration : 0.1}
+
+    }
+
+    // const childVariants = {
+
+    //     hidden : {opacity : 0},
+    //     visible : {opacity : 1},
+
+    // }
+
     return <React.Fragment>
 
-        <div className={wCSS.container}>
+        <motion.div variants={parentVariants} initial='hidden' animate='visible' transition='transition' className={wCSS.container}>
 
             {data.map((card , idx) => {
                 return <div key={idx} className={wCSS.welcome_box}>
@@ -67,7 +83,7 @@ export default function Welcome() {
                 </div>
             })}
 
-        </div>
+        </motion.div>
 
     </React.Fragment>
 
