@@ -2,6 +2,7 @@ import React from 'react';
 
 import pcCSS from './pro-card.module.css';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function ProCard() {
 
@@ -21,20 +22,44 @@ export default function ProCard() {
       className={pcCSS.card}
     >
 
-      <div className={pcCSS.actions}>
+      <Link >
 
-        <span><i className="fa-regular fa-heart"></i></span>
-        <span><i className="fa-solid fa-cart-shopping"></i></span>
+        <div className={pcCSS.actions}>
 
-      </div>
+          <span><i className="fa-regular fa-heart"></i></span>
+          <span><i className="fa-regular fa-bookmark"></i></span>
 
-      <img src={require('../../../Images/auth_bg.jpg')} alt="" />
+        </div>
 
-      <h3>Fruit Salad</h3>
+        <div className={pcCSS.img_cont}>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+          <img src={require('../../../Images/auth_bg.jpg')} alt="" />
 
-      <span>128 EGP</span>
+        </div>
+
+        <div className={pcCSS.det_cont}>
+
+          <div className={pcCSS.cate}>
+
+            <span>Main Dish</span>
+            <span>pastries</span>
+
+          </div>
+
+          <h3>Fruit Salad</h3>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+
+          <div className={pcCSS.price}>
+
+            <h6>180 EGP</h6>
+            <h5>165 EGP</h5>
+
+          </div>
+
+        </div>
+      
+      </Link>
 
     </motion.div>
 
