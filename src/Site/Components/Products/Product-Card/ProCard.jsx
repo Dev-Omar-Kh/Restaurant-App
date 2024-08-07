@@ -1,12 +1,25 @@
 import React from 'react';
 
 import pcCSS from './pro-card.module.css';
+import { motion } from 'framer-motion';
 
 export default function ProCard() {
 
+  // ====== animation ====== //
+
+  const cardVariants = {
+
+    hidden : {opacity : 0 , scale : 0.5},
+      visible : {opacity : 1 , scale : 1 , transition : {duration : 0.3 , type : 'spring'}},
+
+  }
+
   return <React.Fragment>
 
-    <div className={pcCSS.card}>
+    <motion.div
+      variants={cardVariants} 
+      className={pcCSS.card}
+    >
 
       <div className={pcCSS.actions}>
 
@@ -23,7 +36,7 @@ export default function ProCard() {
 
       <span>128 EGP</span>
 
-    </div>
+    </motion.div>
 
   </React.Fragment>
 

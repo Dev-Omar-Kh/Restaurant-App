@@ -11,15 +11,14 @@ export default function Main() {
     const parentVariants = {
 
         hidden : {opacity : 0 , scale : 1.2},
-        visible : {opacity : 1 , scale : 1 , transition : {type: 'wheel' , when : 'beforeChildren' , staggerChildren : 0.05}},
-        transition : {duration : 0.1}
+        visible : {opacity : 1 , scale : 1 , transition : {duration : 0.3 , type: 'wheel' , when : 'beforeChildren' , staggerChildren : 0.03}},
 
     }
 
     const childVariants = {
 
-        hidden : {opacity : 0},
-        visible : {opacity : 1},
+        hidden : {opacity : 0 , y : 10},
+        visible : {opacity : 1 , y : 0},
 
     }
 
@@ -27,7 +26,7 @@ export default function Main() {
 
         <div className={mCSS.main}>
 
-            <motion.div variants={parentVariants} initial='hidden' animate='visible' transition='transition' className={mCSS.container}>
+            <motion.div variants={parentVariants} initial='hidden' animate='visible' className={mCSS.container}>
 
                 <div className={mCSS.main_det}>
 

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import wCSS from './welcome.module.css';
 import { motion } from 'framer-motion';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const data = [
 
     {
-        img : require('../../Images/welcome.png'),
+        img : require('../../Images/welcome-min.jpg'),
         title : 'Welcome to Our Restaurant',
         dis : `
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -23,7 +25,7 @@ const data = [
     },
 
     {
-        img : require('../../Images/about.png'),
+        img : require('../../Images/about-min.jpg'),
         title : 'About Us',
         dis : `
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -42,48 +44,90 @@ const data = [
 
 export default function Welcome() {
 
-    const parentVariants = {
+    const preloadImage = (url) => {
 
-        hidden : {opacity : 0},
-        visible : {opacity : 1 , transition : {type: 'wheel' , when : 'beforeChildren' , staggerChildren : 0.05}},
-        transition : {duration : 0.1}
+        const img = new Image();
+        img.src = url;
+
+    };
+
+    useEffect(() => {
+
+        data.forEach(card => preloadImage(card.img));
+
+    }, []);
+
+    const imgVariants = {
+
+        hidden : {opacity : 0 , x : 50},
+        visible : {opacity : 1 , x : 0 , transition : {type: 'spring' , duration : 0.3}},
 
     }
 
-    // const childVariants = {
+    const textVariants = {
 
-    //     hidden : {opacity : 0},
-    //     visible : {opacity : 1},
+        hidden : {opacity : 0 , x : -50},
+        visible : {
+            opacity : 1 , 
+            x : 0 , 
+            transition : {type: 'spring' , duration : 0.3 , when: 'beforeChildren', staggerChildren: 0.3}
+        },
 
-    // }
+    }
+
+    const childVariants = {
+
+        hidden : {opacity : 0 , y : 50},
+        visible : {opacity : 1 , y : 0 , transition : {type: 'spring' , duration : 0.3}},
+
+    }
 
     return <React.Fragment>
 
-        <motion.div variants={parentVariants} initial='hidden' animate='visible' transition='transition' className={wCSS.container}>
+        <div className={wCSS.container}>
 
             {data.map((card , idx) => {
                 return <div key={idx} className={wCSS.welcome_box}>
 
-                    <div className={wCSS.box_det}>
+                    <motion.div 
+                        variants={textVariants} 
+                        initial='hidden' whileInView='visible' 
+                        viewport={{ once: true, amount: 0.6 }}
+                        className={wCSS.box_det}
+                    >
 
-                        <h3>{card.title}</h3>
+                        <motion.h3 variants={childVariants}>{card.title}</motion.h3>
 
-                        <p> {card.dis} </p>
+                        <motion.p variants={childVariants}> {card.dis} </motion.p>
 
-                        <button>View Dishes</button>
+                        <motion.button variants={childVariants}>View Dishes</motion.button>
 
-                    </div>
+                    </motion.div>
 
-                    <div className={wCSS.box_img}>
+                    <motion.div 
+                        variants={imgVariants} 
+                        initial='hidden' whileInView='visible' 
+                        viewport={{ once: true, amount: 0.6 }}
+                        className={wCSS.box_img}
+                    >
 
-                        <img loading='lazy' src={card.img} alt="" />
+                        {/* <img src={card.img} alt={card.title} loading="lazy" /> */}
 
-                    </div>
+                        <LazyLoadImage
+                            effect="blur"
+                            src={card.img}
+                            alt={card.title}
+                            placeholderSrc={require('../../Images/notFound.jpg')}
+                            width="100%"
+                            height='100%'
+                        />
+
+                    </motion.div>
 
                 </div>
             })}
 
-        </motion.div>
+        </div>
 
     </React.Fragment>
 

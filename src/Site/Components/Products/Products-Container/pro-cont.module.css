@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 60px;
+    overflow-x: hidden;
 
 }
 
@@ -18,7 +19,7 @@
 
 }
 
-.title p{
+.title h3{
 
     font-size: 48px;
     font-weight: 700;
@@ -27,7 +28,7 @@
 
 }
 
-.title span{
+.title p{
 
     font-size: 18px;
     line-height: 150%;
@@ -84,7 +85,7 @@
 
 @media(max-width: 575px){
 
-    .title p{
+    .title h3{
 
         font-size: 32px;
         line-height: 130%;
@@ -92,7 +93,7 @@
 
     }
 
-    .title span{
+    .title p{
 
         font-size: 14px;
         text-align: center;
