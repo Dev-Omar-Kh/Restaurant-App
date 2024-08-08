@@ -10,6 +10,9 @@ export default function Auth() {
     const [typeLogin, setTypeLogin] = useState(true);
     const [verifyMsg, setVerifyMsg] = useState(null);
     const [scrollTop, setScrollTop] = useState(false);
+    const windowWidth = window.innerWidth
+    // console.log(windowWidth);
+    
 
     useEffect(() => {
 
@@ -36,7 +39,7 @@ export default function Auth() {
             overView.classList.remove(aCSS.translate_left);
         }
 
-        if(scrollTop){
+        if(scrollTop && windowWidth < 727){
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -44,18 +47,24 @@ export default function Auth() {
             setScrollTop(false);
         }
 
-    } , [verifyMsg , typeLogin , scrollTop]);
+    } , [verifyMsg , typeLogin , scrollTop , windowWidth]);
 
     useEffect(() => {
 
-        setTimeout(() => {
-            window.scrollTo({
-                top: 520,
-                behavior: 'smooth'
-            });
-        }, 800);
+        if(windowWidth < 727){
 
-    } , []);
+            window.scrollTo({top : 0});
+
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 520,
+                    behavior: 'smooth'
+                });
+            }, 1000);
+
+        }
+
+    } , [windowWidth]);
 
     return <React.Fragment>
 
