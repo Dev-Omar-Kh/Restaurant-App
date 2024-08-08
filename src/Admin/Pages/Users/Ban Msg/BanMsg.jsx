@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import axios from 'axios';
 import { ThreeCircles } from 'react-loader-spinner';
 
-export default function DelMsg({userData , ban , setBan , rerender , setSuccessMsg}) {
+export default function DelMsg({userData , ban , setBan , rerender , setSuccessMsg , setErrMsg}) {
 
     // ====== handel-delete-user ====== //
 
@@ -16,7 +16,7 @@ export default function DelMsg({userData , ban , setBan , rerender , setSuccessM
         setIsLoading(true);
 
         const {data} = await axios.delete(`https://restaurant-six-snowy.vercel.app/auth/${userData._id}`, {
-            headers : {token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YWMxZDMxZjkzMjA1ZTVmZGRkN2VmMCIsImVtYWlsIjoia2hhbGRtcnltNzY5QGdtYWlsLmNvbSIsImlhdCI6MTcyMjczMDU2NSwiZXhwIjoxNzIyOTAzMzY1fQ.iu_LX37JwtWcgrLcMo9DBg-T-Z8z-NgO41JumIi0BYU'}
+            headers : {token : localStorage.getItem('tkn')}
         });
 
         if(data.success){
@@ -25,6 +25,13 @@ export default function DelMsg({userData , ban , setBan , rerender , setSuccessM
             setBan(false);
             setTimeout(() => {
                 setSuccessMsg('The user has been successfully banned !');
+            }, 200);
+
+        }else{
+
+            setBan(false);
+            setTimeout(() => {
+                setErrMsg('Something error !');
             }, 200);
 
         }

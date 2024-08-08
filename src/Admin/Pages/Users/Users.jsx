@@ -14,7 +14,7 @@ export default function Users() {
     const fetchAllUsers =  async() => {
 
         return await axios.get('https://restaurant-six-snowy.vercel.app/auth' , {
-            headers : {token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YWMxZDMxZjkzMjA1ZTVmZGRkN2VmMCIsImVtYWlsIjoia2hhbGRtcnltNzY5QGdtYWlsLmNvbSIsImlhdCI6MTcyMjczMDU2NSwiZXhwIjoxNzIyOTAzMzY1fQ.iu_LX37JwtWcgrLcMo9DBg-T-Z8z-NgO41JumIi0BYU'}
+            headers : {token : localStorage.getItem('tkn')}
         })
 
     }
@@ -27,10 +27,12 @@ export default function Users() {
     const [banMsg, setBanMsg] = useState(false);
     const [userData, setUserData] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
+    const [errMsg, setErrMsg] = useState(null);
     const [visible, setVisible] = useState(true);
 
     const handelBan = (data) => {
 
+        setErrMsg(null)
         setBanMsg(true);
         setUserData(data);
 
@@ -39,7 +41,12 @@ export default function Users() {
     return <React.Fragment>
 
         {successMsg ? <Status icon='success' isVisible={visible} visibility={setVisible} data={successMsg} /> : ''}
-        <BanMsg setSuccessMsg={setSuccessMsg} rerender={refetch} userData={userData} ban={banMsg} setBan={setBanMsg} />
+        {errMsg ? <Status icon='error' isVisible={visible} visibility={setVisible} data={errMsg} /> : ''}
+        <BanMsg 
+            setErrMsg={setErrMsg} setSuccessMsg={setSuccessMsg} 
+            rerender={refetch} userData={userData} ban={banMsg} 
+            setBan={setBanMsg} 
+        />
 
         <div className={uCSS.container}>
 

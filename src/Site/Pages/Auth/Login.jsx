@@ -44,7 +44,7 @@ export default function Login({verify}) {
                 navigate('/')
             } , 3500)
         }
-        else{setErrMsg('Login failed. Something is wrong, try again!')}
+        else{setErrMsg(`Login failed. ${data.message}!`)}
 
         setLoading(false);
 
