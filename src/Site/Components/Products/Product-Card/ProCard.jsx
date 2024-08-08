@@ -10,15 +10,15 @@ export default function ProCard() {
 
   const cardVariants = {
 
-    hidden : {opacity : 0 , scale : 0.5},
-      visible : {opacity : 1 , scale : 1 , transition : {duration : 0.3 , type : 'spring'}},
+    hidden : {opacity : 0 , y : 10},
+    visible : {opacity : 1 , y : 0 , transition : {duration : 0.3 , type : 'spring'}},
 
   }
 
   return <React.Fragment>
 
     <motion.div
-      variants={cardVariants} 
+      variants={cardVariants}
       className={pcCSS.card}
     >
 

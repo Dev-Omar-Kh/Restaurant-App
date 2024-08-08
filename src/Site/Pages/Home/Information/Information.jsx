@@ -53,8 +53,9 @@ export default function Info() {
 
         <motion.div 
             variants={parentVariants} 
-            initial='hidden' whileInView='visible'
-            viewport={{ once: true, amount: 0.8 }}
+            initial='hidden'
+            whileInView='visible'
+            viewport={{ once: true, amount: 0.4 }}
             className={iCSS.container}
         >
 
