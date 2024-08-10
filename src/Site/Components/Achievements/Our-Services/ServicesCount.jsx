@@ -7,27 +7,35 @@ export default function AnimatedNumber ({ targetNumber, increment, duration, lab
     const [isInView, setIsInView] = useState(false);
 
     useEffect(() => {
+
         let interval;
+
         if (isInView && number < targetNumber) {
-        interval = setInterval(() => {
-            setNumber((prev) => {
-            if (prev + increment >= targetNumber) {
-                clearInterval(interval);
-                return targetNumber;
-            }
-            return prev + increment;
-            });
-        }, duration);
+
+            interval = setInterval(() => {
+                setNumber((prev) => {
+                if (prev + increment >= targetNumber) {
+                    clearInterval(interval);
+                    return targetNumber;
+                }
+                return prev + increment;
+                });
+            }, duration);
+
         }
 
         return () => clearInterval(interval);
+
     }, [isInView, number, targetNumber, increment, duration]);
 
     const formatNumber = (num) => {
+
         if (num >= 1000) {
-        return (num / 1000).toFixed(0) + 'K';
+            return (num / 1000).toFixed(0) + 'K';
         }
+
         return num.toLocaleString();
+
     };
 
     return <React.Fragment>

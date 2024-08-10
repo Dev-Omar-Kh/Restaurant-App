@@ -4,9 +4,9 @@ import { Player } from '@lordicon/react';
 import iCSS from './info.module.css';
 import { motion } from 'framer-motion';
 
-const time = require('../../../Images/JSON/clock.json');
-const phone = require('../../../Images/JSON/phone.json');
-const location = require('../../../Images/JSON/location.json');
+const time = require('../../Images/JSON/clock.json');
+const phone = require('../../Images/JSON/phone.json');
+const location = require('../../Images/JSON/location.json');
 
 export default function Info() {
 
@@ -27,9 +27,9 @@ export default function Info() {
             playAndRepeat();
         };
 
-        playAnimation(phoneRef, 5000);
-        playAnimation(locationRef, 6000);
-        playAnimation(timeRef, 7000);
+        playAnimation(timeRef, 5000);
+        playAnimation(phoneRef, 6000);
+        playAnimation(locationRef, 7000);
 
     }, []);
 
