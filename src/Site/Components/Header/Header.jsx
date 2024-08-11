@@ -108,10 +108,10 @@ export default function Header() {
 
                 <div className={hCSS.info_social}>
 
-                    <a href="https://www.facebook.com/profile.php?id=100086035253116" rel="noreferrer" target='_blank'><i className="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/omar.khaled_2004?igsh=Nm9ycWdzZjE1dmZy" rel="noreferrer" target='_blank'><i className="fa-brands fa-instagram"></i></a>
-                    <a href="https://x.com/Omarkhaled_2004?t=FRH4yPqTapuNsI08S8ZPDQ&s=09" rel="noreferrer" target='_blank'><i className="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.youtube.com/" rel="noreferrer" target='_blank'><i className="fa-brands fa-youtube"></i></a>
+                    <a aria-label='go to facebook' href="https://www.facebook.com/profile.php?id=100086035253116" rel="noreferrer" target='_blank'><i className="fa-brands fa-facebook-f"></i></a>
+                    <a aria-label='go to instagram' href="https://www.instagram.com/omar.khaled_2004?igsh=Nm9ycWdzZjE1dmZy" rel="noreferrer" target='_blank'><i className="fa-brands fa-instagram"></i></a>
+                    <a aria-label='go to twitter' href="https://x.com/Omarkhaled_2004?t=FRH4yPqTapuNsI08S8ZPDQ&s=09" rel="noreferrer" target='_blank'><i className="fa-brands fa-x-twitter"></i></a>
+                    <a aria-label='go to youtube' href="https://www.youtube.com/" rel="noreferrer" target='_blank'><i className="fa-brands fa-youtube"></i></a>
 
                 </div>
 

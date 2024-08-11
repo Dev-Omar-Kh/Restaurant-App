@@ -76,11 +76,11 @@ export default function ProCont() {
                 className={pcCSS.filter}
             >
 
-                <div className={pcCSS.filter_scroll}>
+                <menu className={pcCSS.filter_scroll}>
 
-                    {filters.map((type , idx) => <li key={idx} onClick={() => selectType(idx)} style={filterStyle(idx)}>{type}</li>)}
+                    {filters.map((type , idx) => <li aria-label='filter' key={idx} onClick={() => selectType(idx)} style={filterStyle(idx)}>{type}</li>)}
 
-                </div>
+                </menu>
 
             </motion.ul>
 

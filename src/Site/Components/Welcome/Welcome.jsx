@@ -111,8 +111,6 @@ export default function Welcome() {
                         className={wCSS.box_img}
                     >
 
-                        {/* <img src={card.img} alt={card.title} loading="lazy" /> */}
-
                         <LazyLoadImage
                             effect="blur"
                             src={card.img}

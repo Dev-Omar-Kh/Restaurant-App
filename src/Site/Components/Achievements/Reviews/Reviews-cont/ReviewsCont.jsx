@@ -128,11 +128,11 @@ export default function ReviewsCont() {
 
                 <div className={rCSS.actions}>
 
-                    <motion.button id='prev' whileTap={{scale : 0.85}}>
+                    <motion.button aria-label='prev card' id='prev' whileTap={{scale : 0.85}}>
                         <i className="fa-solid fa-chevron-left"></i>
                     </motion.button>
 
-                    <motion.button id='next' whileTap={{scale : 0.85}}>
+                    <motion.button aria-label='next card' id='next' whileTap={{scale : 0.85}}>
                         <i className="fa-solid fa-chevron-right"></i>
                     </motion.button>
 

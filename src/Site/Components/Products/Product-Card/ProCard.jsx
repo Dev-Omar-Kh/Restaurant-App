@@ -10,8 +10,8 @@ export default function ProCard() {
 
   const cardVariants = {
 
-    hidden : {opacity : 0 , y : 30},
-    visible : {opacity : 1 , y : 0 , transition : {duration : 0.3 , type : 'spring'}},
+    hidden : {opacity : 0 , scale : 0.85},
+    visible : {opacity : 1 , scale : 1 , transition : {duration : 0.3 , type : 'spring'}},
 
   }
 
@@ -26,14 +26,14 @@ export default function ProCard() {
 
         <div className={pcCSS.actions}>
 
-          <span><i className="fa-regular fa-heart"></i></span>
-          <span><i className="fa-regular fa-bookmark"></i></span>
+          <button aria-label='add to cart'><i className="fa-regular fa-heart"></i></button>
+          <button aria-label='add to wishlist'><i className="fa-regular fa-bookmark"></i></button>
 
         </div>
 
         <div className={pcCSS.img_cont}>
 
-          <img src={require('../../../Images/auth_bg.jpg')} alt="" />
+          <img src={require('../../../Images/auth_bg.jpg')} alt="pizza" />
 
         </div>
 
