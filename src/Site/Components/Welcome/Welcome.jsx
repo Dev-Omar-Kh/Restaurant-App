@@ -8,7 +8,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 const data = [
 
     {
-        img : require('../../Images/welcome-min.jpg'),
+        img : require('../../Images/welcome-min.avif'),
         title : 'Welcome to Our Restaurant',
         dis : `
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -25,7 +25,7 @@ const data = [
     },
 
     {
-        img : require('../../Images/about-min.jpg'),
+        img : require('../../Images/about-min.avif'),
         title : 'About Us',
         dis : `
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 

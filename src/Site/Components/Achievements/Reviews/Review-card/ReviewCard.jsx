@@ -36,7 +36,7 @@ export default function ReviewCard({width}) {
 
                 <div className={rcCSS.img}>
 
-                    <img src={require('../../../..//Images/pfp.png')} alt="" />
+                    <img src={require('../../../../Images/pfp.avif')} alt="" />
 
                 </div>
 

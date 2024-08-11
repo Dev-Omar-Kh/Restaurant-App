@@ -33,7 +33,7 @@ export default function ProCard() {
 
         <div className={pcCSS.img_cont}>
 
-          <img src={require('../../../Images/auth_bg.jpg')} alt="pizza" />
+          <img src={require('../../../Images/auth_bg.avif')} alt="pizza" />
 
         </div>
 
