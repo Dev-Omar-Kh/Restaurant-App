@@ -31,6 +31,16 @@
 
 }
 
+.load_cont{
+
+    width: 230px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .scroll{
 
     width: fit-content;
@@ -47,7 +57,7 @@
 
 }
 
-@keyframes scroll {
+/* @keyframes scroll {
 
     0% {
         transform: translateX(0);
@@ -57,7 +67,7 @@
         transform: translateX(calc(-100% - 8px));
     }
 
-}
+} */
 
 .scrolling p{
 
@@ -441,11 +451,11 @@
 
 @media(max-width: 1020px){
 
-    .scroll{
+    /* .scroll{
 
-            animation: scroll 40s linear infinite;
+        animation: scroll 40s linear infinite;
 
-    }
+    } */
 
     .info_det p{
 

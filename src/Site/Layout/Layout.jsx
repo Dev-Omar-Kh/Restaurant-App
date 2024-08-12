@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../Components/Header/Header';
-import Footer from './../Components/Footer/Footer';
+// import Footer from './../Components/Footer/Footer';
 
 export default function Layout() {
 
@@ -11,7 +11,7 @@ export default function Layout() {
 
         <Outlet />
 
-        <Footer />
+        {/* <Footer /> */}
 
     </React.Fragment>
 

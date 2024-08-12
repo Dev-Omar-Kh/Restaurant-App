@@ -5,9 +5,25 @@ import SearchBar from './Search-Bar/SearchBar';
 
 import hCSS from './header.module.css';
 import './active.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInfoData } from '../../Store/InfoSlice';
+import { motion } from 'framer-motion';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export default function Header() {
 
+    // ====== call-data ====== //
+
+    const dispatch = useDispatch();
+    const {dataInfo , isLoading} = useSelector((store) => store.info);
+
+    useEffect(() => {
+
+        dispatch(getInfoData());
+
+    } , [dispatch]);
+
+    // console.log(dataInfo);
 
     // ====== nav-for-phone ======
 
@@ -34,18 +50,48 @@ export default function Header() {
 
     // ====== info-moving ======
 
+    const [screenWidth, setScreenWidth] = useState(window.screen.width);
+    const [scrollStarted, setScrollStarted] = useState(false);
+    const [moveCount, setMoveCount] = useState(0);
+    const [timer, setTimer] = useState(0);
+
     useEffect(() => {
 
-        const windowWidth = document.getElementById('header').offsetWidth
-        if(windowWidth <= 1024){
+        const scroll = document.getElementById('scroll');
+        const scrollCont = document.getElementById('scroll_cont');
 
-            const copy = document.getElementById('scrolling').cloneNode(true);
-            const container = document.getElementById('scroll');
-            container.appendChild(copy);
+        const handleScreenWidth  = () => {
+            setScreenWidth(window.innerWidth);
+        }
+        window.addEventListener('resize', handleScreenWidth);
+
+        if(screenWidth <= 1355){
+
+            setMoveCount(-(scroll.offsetWidth - scrollCont.offsetWidth));
+            setTimer((20 - ((screenWidth / 1440) * 20)));
+            setScrollStarted(true);
 
         }
+        else{setScrollStarted(false)}
 
-    } , []);
+        return () => {
+            window.removeEventListener('resize', handleScreenWidth);
+        };
+
+    } , [screenWidth , isLoading]);
+
+    const infoVariants = {
+
+        hidden : {x : 0},
+        visible : scrollStarted ? {
+            x : moveCount , 
+            transition : {
+                duration : timer , 
+                type : 'wheel' , ease: "linear", repeat: Infinity,
+            }
+        } : {x : 0}
+
+    }
 
     // ====== search-bar ======
 
@@ -77,30 +123,41 @@ export default function Header() {
 
             <div className={hCSS.info}>
 
-                <div className={hCSS.info_det}>
+                <div id='scroll_cont' className={hCSS.info_det}>
 
                     <div id='scroll' className={hCSS.scroll}>
 
-                        <div id='scrolling' className={hCSS.scrolling}>
+                        <motion.div 
+                            variants={infoVariants} 
+                            initial='hidden' animate='visible'
+                            id='scrolling' className={hCSS.scrolling}
+                        >
 
-                            <p>Email:info@ddsgnr.com</p>
-                            <p>Phone Number: 956 742 455 678</p>
+                            {isLoading ? <div className={hCSS.load_cont}>
+
+                                <ThreeCircles
+                                    visible={true} height="20" width="20" color="var(--dark-color-2)"
+                                    ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+                                />
+
+                            </div> : <><p>Email: {dataInfo.email}</p>
+                            <p>Phone Number: {dataInfo.phoneNumber}</p>
                             <p>
 
                                 <span className={hCSS.det_bold}>Opening Hours</span>
                                 <span className={hCSS.line}></span>
-                                <span className={hCSS.det_days}>Monday - Friday</span>
-                                <span>8:00am to 9:00pm</span>
+                                <span className={hCSS.det_days}>{dataInfo.fullTime.day}</span>
+                                <span>{dataInfo.fullTime.time}</span>
 
                             </p>
                             <p>
 
-                                <span className={hCSS.det_days}>Saturday - Sunday</span>
-                                <span>8:00am to 4:00pm</span>
+                                <span className={hCSS.det_days}>{dataInfo.partTime.day}</span>
+                                <span>{dataInfo.partTime.time}</span>
 
-                            </p>
+                            </p></>}
 
-                        </div>
+                        </motion.div>
 
                     </div>
 

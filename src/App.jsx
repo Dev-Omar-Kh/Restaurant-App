@@ -9,6 +9,8 @@ import AdminRoute from './Site/Components/Admin-Protect/AdminRoute';
 
 import './App.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
+import { Store } from './Site/Store/Store';
 
 const routes = createBrowserRouter([
 
@@ -33,11 +35,15 @@ export default function App() {
 
   return <React.Fragment>
 
-    <QueryClientProvider client={clientQuery}>
+    <Provider store={Store}>
 
-      <RouterProvider router={routes} />
+      <QueryClientProvider client={clientQuery}>
 
-    </QueryClientProvider>
+        <RouterProvider router={routes} />
+
+      </QueryClientProvider>
+
+    </Provider>
 
   </React.Fragment>
 

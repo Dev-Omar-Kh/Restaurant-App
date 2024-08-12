@@ -1,0 +1,120 @@
+.container{
+
+    width: 100%;
+    padding: 50px 4.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    background-color: var(--dark-color-1);
+
+}
+
+.subscribe{
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.subscribe_det{
+
+    color: var(--light-color);
+
+}
+
+.subscribe_det h3 , .open h5{
+
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 150%;
+
+}
+
+.title_p , .time p{
+
+    font-size: 14px;
+    line-height: 150%;
+
+}
+
+.open{
+
+    padding: 11px 0px;
+
+}
+
+.time{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.send_email{
+
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+}
+
+.form_cont{
+
+    display: flex;
+    gap: 16px;
+
+}
+
+.form_cont input{
+
+    width: 250px;
+    height: 40px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--light-color);
+    border-radius: 5px;
+    border: 1px solid var(--light-color);
+    background-color: transparent;
+
+}
+
+
+.form_cont input::placeholder{
+
+    font-weight: 400;
+    color: var(--light-color);
+    opacity: 0.7;
+
+}
+
+.form_cont button{
+
+    height: 40px;
+    padding: 8px 16px;
+    font-size: 16px;
+    color: var(--light-color);
+    border-radius: 5px;
+    border: 1px solid var(--light-color);
+    background-color: transparent;
+
+}
+
+.send_email p{
+
+    font-size: 12px;
+    line-height: 150%;
+    color: var(--light-color);
+
+}
+
+.important_links{
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
