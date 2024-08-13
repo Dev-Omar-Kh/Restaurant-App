@@ -3,12 +3,26 @@ import { Player } from '@lordicon/react';
 
 import iCSS from './info.module.css';
 import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInfoData } from '../../Store/InfoSlice';
+import { ThreeCircles } from 'react-loader-spinner';
 
 const time = require('../../Images/JSON/clock.json');
 const phone = require('../../Images/JSON/phone.json');
 const location = require('../../Images/JSON/location.json');
 
 export default function Info() {
+
+    // ====== call-data ====== //
+
+    const dispatch = useDispatch();
+    const {dataInfo , isLoading} = useSelector((store) => store.info);
+
+    useEffect(() => {
+
+        dispatch(getInfoData());
+
+    } , [dispatch]);
 
     // ====== lord-icon ====== //
 
@@ -70,13 +84,20 @@ export default function Info() {
 
                 </div>
 
-                <div className={iCSS.info_det}>
+                {isLoading ? <div className={iCSS.load_cont}>
+
+                    <ThreeCircles
+                        visible={true} height="80" width="80" color="var(--dark-color-2)"
+                        ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+                    />
+
+                </div> : <div className={iCSS.info_det}>
 
                     <h3>Open Hours</h3>
-                    <p>Monday - Friday | 8:00am- 9:00pm</p>
-                    <p>Saturday - Sunday | 8:00am- 4:00pm</p>
+                    <p>{dataInfo.fullTime.day} | {dataInfo.fullTime.time}</p>
+                    <p>{dataInfo.partTime.day} | {dataInfo.partTime.time}</p>
 
-                </div>
+                </div>}
 
             </motion.div>
 
@@ -91,13 +112,20 @@ export default function Info() {
 
                 </div>
 
-                <div className={iCSS.info_det}>
+                {isLoading ? <div className={iCSS.load_cont}>
+
+                    <ThreeCircles
+                        visible={true} height="80" width="80" color="var(--dark-color-2)"
+                        ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+                    />
+
+                </div> : <div className={iCSS.info_det}>
 
                     <h3>Phone</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-                    <p className={iCSS.line_bottom}>+1 (555) 000-0000</p>
+                    <p className={iCSS.line_bottom}>+{dataInfo.phoneNumber}</p>
 
-                </div>
+                </div>}
 
             </motion.div>
 
@@ -112,13 +140,20 @@ export default function Info() {
 
                 </div>
 
-                <div className={iCSS.info_det}>
+                {isLoading ? <div className={iCSS.load_cont}>
+
+                    <ThreeCircles
+                        visible={true} height="80" width="80" color="var(--dark-color-2)"
+                        ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+                    />
+
+                </div> : <div className={iCSS.info_det}>
 
                     <h3>Office</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-                    <p className={iCSS.line_bottom}>123 Sample St, Sydney NSW 2000 AU</p>
+                    <p className={iCSS.line_bottom}>{dataInfo.email}</p>
 
-                </div>
+                </div>}
 
             </motion.div>
 

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import SearchBar from './Search-Bar/SearchBar';
-
-import hCSS from './header.module.css';
-import './active.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInfoData } from '../../Store/InfoSlice';
 import { motion } from 'framer-motion';
 import { ThreeCircles } from 'react-loader-spinner';
+
+import hCSS from './header.module.css';
+import './active.css';
 
 export default function Header() {
 
@@ -22,8 +22,6 @@ export default function Header() {
         dispatch(getInfoData());
 
     } , [dispatch]);
-
-    // console.log(dataInfo);
 
     // ====== nav-for-phone ======
 
@@ -87,7 +85,7 @@ export default function Header() {
             x : moveCount , 
             transition : {
                 duration : timer , 
-                type : 'wheel' , ease: "linear", repeat: Infinity,
+                type : 'linear' , ease: "linear", repeat: Infinity, repeatDelay: 1,
             }
         } : {x : 0}
 

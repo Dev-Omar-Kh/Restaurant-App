@@ -32,7 +32,8 @@ export default function Users() {
 
     const handelBan = (data) => {
 
-        setErrMsg(null)
+        setSuccessMsg(null);
+        setErrMsg(null);
         setBanMsg(true);
         setUserData(data);
 
