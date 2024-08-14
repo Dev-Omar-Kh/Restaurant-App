@@ -55,43 +55,43 @@ export default function SideBar({show , setShow}) {
 
                     <ul>
 
-                        <NavLink className='admin_nav_link' to={'/dashboard'}>
+                        <NavLink className='admin_nav_link' to={'/dashboard/user'}>
                             <li>
                                 <i id={sbCSS.i} className="icons_active fa-solid fa-users-viewfinder"></i><span>Users</span>
                             </li>
                         </NavLink>
 
-                        <NavLink className='admin_nav_link' to={'/info'}>
+                        <NavLink className='admin_nav_link' to={'/dashboard/info'}>
                             <li>
                                 <i id={sbCSS.i} className="icons_active fa-solid fa-hashtag"></i><span>Information</span>
                             </li>
                         </NavLink>
 
-                        <NavLink className='admin_nav_link' to={'/main'}>
+                        <NavLink className='admin_nav_link' to={'/dashboard/main'}>
                             <li>
                                 <i id={sbCSS.i} className="icons_active fa-regular fa-images"></i><span>Main</span>
                             </li>
                         </NavLink>
 
-                        <NavLink className='admin_nav_link' to={'/offers'}>
+                        <NavLink className='admin_nav_link' to={'/dashboard/offers'}>
                             <li>
                                 <i id={sbCSS.i} className="icons_active fa-solid fa-gifts"></i><span>Offers</span>
                             </li>
                         </NavLink>
 
-                        <NavLink className='admin_nav_link' to={'/products'}>
+                        <NavLink className='admin_nav_link' to={'/dashboard/products'}>
                             <li>
                                 <i id={sbCSS.i} className="icons_active fa-solid fa-basket-shopping"></i><span>Products</span>
                             </li>
                         </NavLink>
 
-                        <NavLink className='admin_nav_link' to={'/msgs'}>
+                        <NavLink className='admin_nav_link' to={'/dashboard/msgs'}>
                             <li>
                                 <i id={sbCSS.i} className="icons_active fa-regular fa-comments"></i><span>Message</span>
                             </li>
                         </NavLink>
 
-                        <NavLink className='admin_nav_link' to={'/who'}>
+                        <NavLink className='admin_nav_link' to={'/dashboard/who'}>
                             <li>
                                 <i id={sbCSS.i} className="icons_active fa-solid fa-square-poll-horizontal"></i><span>Who we are</span>
                             </li>

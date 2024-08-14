@@ -5,12 +5,13 @@ import LayoutAdmin from './Admin/Layout/LayoutAdmin';
 import Home from './Site/Pages/Home/Home';
 import Auth from './Site/Pages/Auth/Auth';
 import Users from './Admin/Pages/Users/Users';
-import AdminRoute from './Site/Components/Admin-Protect/AdminRoute';
+import AdminRoute from './Admin/Protected/AdminRoute';
 
 import './App.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { Store } from './Site/Store/Store';
+import Info from './Admin/Pages/Info/Info';
 
 const routes = createBrowserRouter([
 
@@ -23,7 +24,8 @@ const routes = createBrowserRouter([
 
   {path : 'dashboard' , element : <AdminRoute><LayoutAdmin /></AdminRoute> , children : [
 
-    {path : '/dashboard' , element : <Users />}
+    {path : '/dashboard/user' , element : <Users />},
+    {path : '/dashboard/info' , element : <Info />},
 
   ]}
 

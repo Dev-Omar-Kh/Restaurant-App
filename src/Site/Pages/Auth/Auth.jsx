@@ -11,8 +11,6 @@ export default function Auth() {
     const [verifyMsg, setVerifyMsg] = useState(null);
     const [scrollTop, setScrollTop] = useState(false);
     const windowWidth = window.innerWidth
-    // console.log(windowWidth);
-    
 
     useEffect(() => {
 
@@ -60,7 +58,7 @@ export default function Auth() {
                     top: 520,
                     behavior: 'smooth'
                 });
-            }, 1000);
+            }, 2500);
 
         }
 

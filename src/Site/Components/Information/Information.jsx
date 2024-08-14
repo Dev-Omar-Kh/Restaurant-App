@@ -151,7 +151,7 @@ export default function Info() {
 
                     <h3>Office</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-                    <p className={iCSS.line_bottom}>{dataInfo.email}</p>
+                    <p className={iCSS.line_bottom}>{dataInfo.address}</p>
 
                 </div>}
 

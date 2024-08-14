@@ -85,7 +85,7 @@ export default function Header() {
             x : moveCount , 
             transition : {
                 duration : timer , 
-                type : 'linear' , ease: "linear", repeat: Infinity, repeatDelay: 1,
+                type : 'linear' , ease: "linear", repeat: Infinity, repeatDelay: 2,
             }
         } : {x : 0}
 

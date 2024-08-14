@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-
-import uCSS from './users.module.css';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { ThreeCircles } from 'react-loader-spinner';
 import BanMsg from './Ban Msg/BanMsg';
 import Status from '../../../Site/Components/Status/Status';
+
+import uCSS from './users.module.css';
+import localCSS from '../../Style/Local-style.module.css';
 
 export default function Users() {
 
@@ -49,9 +50,9 @@ export default function Users() {
             setBan={setBanMsg} 
         />
 
-        <div className={uCSS.container}>
+        <div className={localCSS.container}>
 
-            <div className={uCSS.title}>
+            <div className={localCSS.title}>
                 <i className="icons_active fa-solid fa-users-viewfinder"></i>
                 Restaurant Users 
             </div>
