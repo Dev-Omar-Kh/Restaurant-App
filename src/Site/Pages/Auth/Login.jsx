@@ -28,7 +28,7 @@ export default function Login({verify}) {
 
     }
 
-    const registerHandle = async(values) => {
+    const loginHandle = async(values) => {
 
         setLoading(true);
 
@@ -37,6 +37,7 @@ export default function Login({verify}) {
         
         if(data.success){
             localStorage.setItem('tkn' , data.result);
+            window.dispatchEvent(new Event('tokenChanged'));
 
             setSuccessMsg('Login processed successfully. Welcome!');
 
@@ -54,7 +55,7 @@ export default function Login({verify}) {
 
         initialValues : userValue,
 
-        onSubmit : registerHandle,
+        onSubmit : loginHandle,
 
         validate : (values) => {
 

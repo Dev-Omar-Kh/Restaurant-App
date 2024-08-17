@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import mCSS from './main.module.css';
 import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMainData } from '../../Store/MainSlice';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export default function Main() {
 
-    const h3 = "Experience the real taste of Best Dishes";
-    const p = "Experience the real taste of Dishes";
+    // ====== get-data ====== //
+
+    const {mainData , mainLoading} = useSelector(store => store.main);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        dispatch(getMainData());
+
+    } , [dispatch]);
+
+    // ====== animation ====== //
 
     const parentVariants = {
 
         hidden : {opacity : 0 , scale : 1.2},
-        visible : {opacity : 1 , scale : 1 , transition : {duration : 0.3 , type: 'wheel' , when : 'beforeChildren' , staggerChildren : 0.03}},
+        visible : {opacity : 1 , scale : 1 , transition : {
+            duration : 0.3 , type: 'wheel' , when : 'beforeChildren' , staggerChildren : 0.03
+        }},
 
     }
 
@@ -26,17 +41,32 @@ export default function Main() {
 
         <div className={mCSS.main}>
 
-            <motion.div variants={parentVariants} initial='hidden' animate='visible' className={mCSS.container}>
+            {mainLoading ? <div
+                style={{
+                    width : '100%' , height : '80vh',
+                    display : 'flex' , alignItems : 'center',
+                    justifyContent : 'center'
+                }}
+            >
+
+                <ThreeCircles
+                    visible={true} height="100" width="100" color="var(--dark-color-2)"
+                    ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+                />
+
+            </div> : <motion.div 
+                variants={parentVariants} initial='hidden' animate='visible' className={mCSS.container}
+            >
 
                 <div className={mCSS.main_det}>
 
-                    <h3>{h3.split('').map((char , idx) => {
+                    <h3>{mainData.title.split('').map((char , idx) => {
 
                         return  <motion.span key={idx} variants={childVariants}>{char}</motion.span>
 
                     })}</h3>
 
-                    <p>{p.split('').map((char , idx) => {
+                    <p>{mainData.description.split('').map((char , idx) => {
 
                         return  <motion.span key={idx} variants={childVariants}>{char}</motion.span>
 
@@ -51,7 +81,7 @@ export default function Main() {
 
                 </div>
 
-            </motion.div>
+            </motion.div>}
 
         </div>
 

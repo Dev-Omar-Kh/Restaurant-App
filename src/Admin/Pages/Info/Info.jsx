@@ -299,7 +299,7 @@ export default function Info() {
 
                     {startUpdate && <button onClick={() => setSubmitForm(true)} className={iCSS.submit} type='submit'>
                         {updateLoading ? <ThreeCircles
-                            visible={true} height="20" width="20" color="#F1FAEE"
+                            visible={true} height="20" width="20" color="var(--dark-color-1)"
                             ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
                         /> : <>
                             <i className="fa-regular fa-pen-to-square"></i>

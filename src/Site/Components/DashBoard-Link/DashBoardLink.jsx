@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserRole } from '../../Site/Store/AdminRouteSlice';
+import React, { useEffect, useState } from 'react';
 
-export default function ProtectedRoute({children}) {
+import dblCSS from './dbl.module.css';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserRole } from '../../Store/AdminRouteSlice';
+
+export default function DashBoardLink() {
 
     const [token, setToken] = useState(localStorage.getItem('tkn'));
 
@@ -34,19 +37,13 @@ export default function ProtectedRoute({children}) {
 
     }, []);
 
-    if(userRole !== 'admin'){
-
-        return <React.Fragment>
-
-            <h1>Error 404</h1>
-
-        </React.Fragment>
-
-    }
-
     return <React.Fragment>
 
-        {children}
+        {userRole === 'user' ? '' : <Link to={'/dashboard/user'} className={dblCSS.container}>
+
+            <img src={require('../../Images/dashboard-icon-light.webp')} alt="" />
+
+        </Link>}
 
     </React.Fragment>
 
