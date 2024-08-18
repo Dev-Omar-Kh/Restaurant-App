@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-
-import iCSS from './info.module.css';
-import localCSS from '../../Style/Local-style.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInfoData } from '../../../Site/Store/InfoSlice';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { ThreeCircles } from 'react-loader-spinner';
 import Status from '../../../Site/Components/Status/Status';
+
+import iCSS from '../../Style/form.module.css';
+import localCSS from '../../Style/Local-style.module.css';
 
 export default function Info() {
 
@@ -25,8 +25,6 @@ export default function Info() {
     // ====== update-data ====== //
 
     const [startUpdate, setStartUpdate] = useState(false);
-    const [submitForm, setSubmitForm] = useState(false);
-
     const [errMsg, setErrMsg] = useState(null);
     const [visible, setVisible] = useState(true);
     const [successMsg, setSuccessMsg] = useState(null);
@@ -80,12 +78,11 @@ export default function Info() {
 
             setSuccessMsg('Information updated successfully');
             setStartUpdate(false);
-            setSubmitForm(false);
 
         }
         else{
 
-            setErrMsg('Operation failed, try again');
+            setErrMsg(data.message);
 
         }
 
@@ -106,18 +103,34 @@ export default function Info() {
             const error = {};
 
             if(
-                values.address.length < 4 ||
-                values.cloTime.length < 4 ||
-                values.email.length < 4 ||
-                values.fFrom.length < 4 ||
-                values.fTo.length < 4 ||
-                values.opTime.length < 4 ||
-                values.pCloTime.length < 4 ||
-                values.pFrom.length < 4 ||
-                values.pOpTime.length < 4 ||
-                values.pTo.length < 4 ||
-                values.phoneNumber.length < 4
-            ){error.formError = 'There is an empty input or its length is less than 4 characters'}
+                values.fFrom.length < 4 || values.fTo.length < 4 || 
+                values.opTime.length < 4 || values.cloTime.length < 4
+            ){
+                error.fullTime = 'Some thing error';
+            }
+
+            if(
+                values.pFrom.length < 4 || values.pTo.length < 4 || 
+                values.pOpTime.length < 4 || values.pCloTime.length < 4
+            ){
+                error.partTime = 'Some thing error';
+            }
+
+            if(!values.email.includes('@') && !values.email.includes('.')){
+                error.email = 'The email is invalid';
+            }
+
+            if(!values.phoneNumber.match(/^(02)?01[0125][0-9]{8}$/)){
+                error.phoneNumber = 'The phone number is invalid';
+            }
+
+            if(values.address.length < 4){
+                error.address = 'The location is too short'
+            }
+
+            if(values.address.length > 49){
+                error.address = 'The location is too long'
+            }
 
             return error
 
@@ -143,18 +156,20 @@ export default function Info() {
                 className={iCSS.form}
             >
 
-                {formikObj.errors.formError && submitForm ? <div className={iCSS.msg_cont}>
-                    <div className={iCSS.err_msg}> * {formikObj.errors.formError}</div>
-                </div> : ''}
-
                 <div className={iCSS.input_cont}>
 
                     <div className={iCSS.loader}></div>
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">
+                        <span>Email : </span>
+                        {formikObj.errors.email && formikObj.touched.email &&
+                            <span className={iCSS.err_msg_label}>* {formikObj.errors.email}</span>
+                        }
+                    </label>
                     <input
-                        disabled={!startUpdate}
                         id='email'
                         type="text" placeholder={isLoading ? 'Loading...' : 'Restaurant email'} 
+                        disabled={!startUpdate}
+                        onBlur={formikObj.handleBlur}
                         onChange={formikObj.handleChange}
                         value={formikObj.values.email || ''}
                     />
@@ -165,11 +180,17 @@ export default function Info() {
 
                     <div className={iCSS.loader}></div>
 
-                    <label htmlFor="phoneNumber">Phone</label>
+                    <label htmlFor="phoneNumber">
+                        <span>Phone : </span>
+                        {formikObj.errors.phoneNumber && formikObj.touched.phoneNumber &&
+                            <span className={iCSS.err_msg_label}>* {formikObj.errors.phoneNumber}</span>
+                        }
+                    </label>
                     <input
-                        disabled={!startUpdate}
                         id='phoneNumber'
                         type="text" placeholder={isLoading ? 'Loading...' : 'Restaurant phone' }
+                        disabled={!startUpdate}
+                        onBlur={formikObj.handleBlur}
                         onChange={formikObj.handleChange}
                         value={formikObj.values.phoneNumber || ''}
                     />
@@ -178,7 +199,12 @@ export default function Info() {
 
                 <div className={iCSS.times}>
 
-                    <h3>Full time job</h3>
+                    <div className={iCSS.times_header}>
+                        <h3>Full time job</h3>
+                        {formikObj.errors.fullTime &&
+                            <span className={iCSS.err_msg_label}>* {formikObj.errors.fullTime}</span>
+                        }
+                    </div>
 
                     <div className={iCSS.time_box}>
 
@@ -228,7 +254,12 @@ export default function Info() {
 
                 <div className={iCSS.times}>
 
-                    <h3>Part time job</h3>
+                    <div className={iCSS.times_header}>
+                        <h3>Part time job</h3>
+                        {formikObj.errors.partTime &&
+                            <span className={iCSS.err_msg_label}>* {formikObj.errors.partTime}</span>
+                        }
+                    </div>
 
                     <div className={iCSS.time_box}>
 
@@ -280,11 +311,17 @@ export default function Info() {
 
                     <div className={iCSS.loader}></div>
 
-                    <label htmlFor="address">Location</label>
+                    <label htmlFor="address">
+                        <span>Location : </span>
+                        {formikObj.errors.address && formikObj.touched.address &&
+                            <span className={iCSS.err_msg_label}>* {formikObj.errors.address}</span>
+                        }
+                    </label>
                     <input
-                        disabled={!startUpdate}
                         id='address'
                         type="text" placeholder={isLoading ? 'Loading...' : 'Restaurant Location'} 
+                        disabled={!startUpdate}
+                        onBlur={formikObj.handleBlur}
                         onChange={formikObj.handleChange}
                         value={formikObj.values.address || ''}
                     />
@@ -297,7 +334,7 @@ export default function Info() {
                         Start Update
                     </button>}
 
-                    {startUpdate && <button onClick={() => setSubmitForm(true)} className={iCSS.submit} type='submit'>
+                    {startUpdate && <button className={iCSS.submit} type='submit'>
                         {updateLoading ? <ThreeCircles
                             visible={true} height="20" width="20" color="var(--dark-color-1)"
                             ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""

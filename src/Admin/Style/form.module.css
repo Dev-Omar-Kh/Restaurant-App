@@ -47,11 +47,18 @@
 
 }
 
-.input_cont label {
+.input_cont label , .times_header{
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+}
+
+.err_msg_label{
+
+    font-size: 11px;
+    color: var(--dark-color-2);
 
 }
 
@@ -215,6 +222,74 @@ input{
 
 }
 
+.input_img_cont{
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.img_view , .input_img{
+
+    width: 300px;
+    max-width: calc(50% - 15px);
+    height: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+
+}
+
+.img_view{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px var(--dark-color-1-01);
+
+}
+
+.input_img{
+
+    border: 2px dashed var(--dark-color-2);
+
+}
+
+.img_view img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.input_img label{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: var(--dark-color-2);
+
+}
+
+.input_img label input{
+
+    display: none;
+
+}
+
+.input_img label p{
+
+    font-size: 20px;
+
+}
+
 /* ====== responsive-style ======  */
 
 @media(max-width: 700px){
@@ -234,6 +309,12 @@ input{
 }
 
 @media(max-width: 445px){
+
+    .img_view , .input_img{
+
+        min-width: 100% !important;
+
+    }
 
     .err_msg{
 

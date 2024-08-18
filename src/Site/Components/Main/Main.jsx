@@ -55,7 +55,8 @@ export default function Main() {
                 />
 
             </div> : <motion.div 
-                variants={parentVariants} initial='hidden' animate='visible' className={mCSS.container}
+                variants={parentVariants} initial='hidden' animate='visible' 
+                style={{backgroundImage : `url(${mainData.image.url})`}} className={mCSS.container}
             >
 
                 <div className={mCSS.main_det}>

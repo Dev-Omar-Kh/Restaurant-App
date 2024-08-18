@@ -12,6 +12,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { Store } from './Site/Store/Store';
 import Info from './Admin/Pages/Info/Info';
+import Main from './Admin/Pages/Main/Main';
 
 const routes = createBrowserRouter([
 
@@ -26,6 +27,7 @@ const routes = createBrowserRouter([
 
     {path : '/dashboard/user' , element : <Users />},
     {path : '/dashboard/info' , element : <Info />},
+    {path : '/dashboard/main' , element : <Main />},
 
   ]}
 
